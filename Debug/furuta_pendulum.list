@@ -21,9 +21,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   8 .data         0000003c  20000000  08006370  00008000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00000358  2000003c  080063ac  0000803c  2**2
+  9 .bss          00000364  2000003c  080063ac  0000803c  2**2
                   ALLOC
- 10 ._user_heap_stack 00000604  20000394  080063ac  00008394  2**0
+ 10 ._user_heap_stack 00000600  200003a0  080063ac  000083a0  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0000803c  2**0
                   CONTENTS, READONLY
@@ -1292,7 +1292,7 @@ void WS2812_Send(uint32_t colours[])
   }
 
   // force a gap after the data is finished (from datasheet, min 50 microseconds)
-  for (int i = 0; i < 40; i++) {
+  for (int i = 0; i < 50; i++) {
  8000f5a:	2300      	movs	r3, #0
  8000f5c:	60fb      	str	r3, [r7, #12]
  8000f5e:	e007      	b.n	8000f70 <WS2812_Send+0x90>
@@ -1302,12 +1302,12 @@ void WS2812_Send(uint32_t colours[])
  8000f64:	4a0d      	ldr	r2, [pc, #52]	@ (8000f9c <WS2812_Send+0xbc>)
  8000f66:	2100      	movs	r1, #0
  8000f68:	54d1      	strb	r1, [r2, r3]
-  for (int i = 0; i < 40; i++) {
+  for (int i = 0; i < 50; i++) {
  8000f6a:	68fb      	ldr	r3, [r7, #12]
  8000f6c:	3301      	adds	r3, #1
  8000f6e:	60fb      	str	r3, [r7, #12]
  8000f70:	68fb      	ldr	r3, [r7, #12]
- 8000f72:	2b27      	cmp	r3, #39	@ 0x27
+ 8000f72:	2b31      	cmp	r3, #49	@ 0x31
  8000f74:	ddf4      	ble.n	8000f60 <WS2812_Send+0x80>
   }
 
@@ -1324,7 +1324,7 @@ void WS2812_Send(uint32_t colours[])
  8000f84:	601a      	str	r2, [r3, #0]
 
 	HAL_SPI_Transmit_DMA(&hspi2, (uint32_t *)spi_data, SPI_DATA_SIZE);
- 8000f86:	f44f 728c 	mov.w	r2, #280	@ 0x118
+ 8000f86:	f44f 7291 	mov.w	r2, #290	@ 0x122
  8000f8a:	4904      	ldr	r1, [pc, #16]	@ (8000f9c <WS2812_Send+0xbc>)
  8000f8c:	4805      	ldr	r0, [pc, #20]	@ (8000fa4 <WS2812_Send+0xc4>)
  8000f8e:	f003 f87b 	bl	8004088 <HAL_SPI_Transmit_DMA>
@@ -1786,15 +1786,15 @@ void ComputeEnergyShaping() {
  8001358:	20000008 	.word	0x20000008
  800135c:	20000231 	.word	0x20000231
  8001360:	20000004 	.word	0x20000004
- 8001364:	2000036c 	.word	0x2000036c
+ 8001364:	20000378 	.word	0x20000378
  8001368:	20000230 	.word	0x20000230
  800136c:	1b4e81b5 	.word	0x1b4e81b5
  8001370:	080059e0 	.word	0x080059e0
  8001374:	3ff00000 	.word	0x3ff00000
- 8001378:	20000370 	.word	0x20000370
+ 8001378:	2000037c 	.word	0x2000037c
  800137c:	45160000 	.word	0x45160000
- 8001380:	20000374 	.word	0x20000374
- 8001384:	20000378 	.word	0x20000378
+ 8001380:	20000380 	.word	0x20000380
+ 8001384:	20000384 	.word	0x20000384
  8001388:	20000018 	.word	0x20000018
  800138c:	20000234 	.word	0x20000234
  8001390:	2000000c 	.word	0x2000000c
@@ -1828,7 +1828,7 @@ void ComputeEnergyShaping() {
  80013d8:	2000000c 	.word	0x2000000c
  80013dc:	20000234 	.word	0x20000234
  80013e0:	20000004 	.word	0x20000004
- 80013e4:	2000036c 	.word	0x2000036c
+ 80013e4:	20000378 	.word	0x20000378
 
 080013e8 <ComputePID>:
 
@@ -2141,12 +2141,12 @@ void ComputePID() {
  80016dc:	20000004 	.word	0x20000004
  80016e0:	2000024c 	.word	0x2000024c
  80016e4:	4092c000 	.word	0x4092c000
- 80016e8:	2000037c 	.word	0x2000037c
+ 80016e8:	20000388 	.word	0x20000388
  80016ec:	20000231 	.word	0x20000231
- 80016f0:	20000380 	.word	0x20000380
- 80016f4:	2000038c 	.word	0x2000038c
- 80016f8:	20000384 	.word	0x20000384
- 80016fc:	20000388 	.word	0x20000388
+ 80016f0:	2000038c 	.word	0x2000038c
+ 80016f4:	20000398 	.word	0x20000398
+ 80016f8:	20000390 	.word	0x20000390
+ 80016fc:	20000394 	.word	0x20000394
  8001700:	20000020 	.word	0x20000020
  8001704:	20000230 	.word	0x20000230
  8001708:	2000002c 	.word	0x2000002c
@@ -2186,8 +2186,8 @@ void ComputePID() {
  800175a:	bf00      	nop
  800175c:	2000000c 	.word	0x2000000c
  8001760:	20000234 	.word	0x20000234
- 8001764:	20000380 	.word	0x20000380
- 8001768:	20000388 	.word	0x20000388
+ 8001764:	2000038c 	.word	0x2000038c
+ 8001768:	20000394 	.word	0x20000394
  800176c:	00000000 	.word	0x00000000
 
 08001770 <main>:
@@ -4814,7 +4814,7 @@ LoopFillZerobss:
   ldr r2, =_sbss
  80027d4:	2000003c 	.word	0x2000003c
   ldr r4, =_ebss
- 80027d8:	20000394 	.word	0x20000394
+ 80027d8:	200003a0 	.word	0x200003a0
 
 080027dc <ADC_IRQHandler>:
  * @retval None       
@@ -4977,7 +4977,7 @@ __weak void HAL_IncTick(void)
  80028a0:	4770      	bx	lr
  80028a2:	bf00      	nop
  80028a4:	20000038 	.word	0x20000038
- 80028a8:	20000390 	.word	0x20000390
+ 80028a8:	2000039c 	.word	0x2000039c
 
 080028ac <HAL_GetTick>:
   * @note This function is declared as __weak to be overwritten in case of other 
@@ -4997,7 +4997,7 @@ __weak uint32_t HAL_GetTick(void)
  80028b8:	f85d 7b04 	ldr.w	r7, [sp], #4
  80028bc:	4770      	bx	lr
  80028be:	bf00      	nop
- 80028c0:	20000390 	.word	0x20000390
+ 80028c0:	2000039c 	.word	0x2000039c
 
 080028c4 <__NVIC_SetPriorityGrouping>:
            In case of a conflict between priority grouping and available

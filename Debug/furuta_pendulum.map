@@ -3749,7 +3749,7 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .igot.plt      0x2000003c        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 0x2000003c                        . = ALIGN (0x4)
 
-.bss            0x2000003c      0x358 load address 0x080063ac
+.bss            0x2000003c      0x364 load address 0x080063ac
                 0x2000003c                        _sbss = .
                 0x2000003c                        __bss_start__ = _sbss
  *(.bss)
@@ -3801,52 +3801,52 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .bss.time_change
                 0x20000250        0x4 ./Core/Src/main.o
                 0x20000250                time_change
- .bss.spi_data  0x20000254      0x118 ./Core/Src/main.o
+ .bss.spi_data  0x20000254      0x122 ./Core/Src/main.o
                 0x20000254                spi_data
+ *fill*         0x20000376        0x2 
  .bss.previous_position
-                0x2000036c        0x4 ./Core/Src/main.o
-                0x2000036c                previous_position
- .bss.cosine_angle
-                0x20000370        0x4 ./Core/Src/main.o
-                0x20000370                cosine_angle
- .bss.angular_velocity
-                0x20000374        0x4 ./Core/Src/main.o
-                0x20000374                angular_velocity
- .bss.energy_term
                 0x20000378        0x4 ./Core/Src/main.o
-                0x20000378                energy_term
- .bss.error     0x2000037c        0x4 ./Core/Src/main.o
-                0x2000037c                error
- .bss.low_pass_error
+                0x20000378                previous_position
+ .bss.cosine_angle
+                0x2000037c        0x4 ./Core/Src/main.o
+                0x2000037c                cosine_angle
+ .bss.angular_velocity
                 0x20000380        0x4 ./Core/Src/main.o
-                0x20000380                low_pass_error
- .bss.error_low_pass_constant
+                0x20000380                angular_velocity
+ .bss.energy_term
                 0x20000384        0x4 ./Core/Src/main.o
-                0x20000384                error_low_pass_constant
- .bss.previous_error
-                0x20000388        0x4 ./Core/Src/main.o
-                0x20000388                previous_error
- .bss.integral_term
+                0x20000384                energy_term
+ .bss.error     0x20000388        0x4 ./Core/Src/main.o
+                0x20000388                error
+ .bss.low_pass_error
                 0x2000038c        0x4 ./Core/Src/main.o
-                0x2000038c                integral_term
- .bss.uwTick    0x20000390        0x4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
-                0x20000390                uwTick
+                0x2000038c                low_pass_error
+ .bss.error_low_pass_constant
+                0x20000390        0x4 ./Core/Src/main.o
+                0x20000390                error_low_pass_constant
+ .bss.previous_error
+                0x20000394        0x4 ./Core/Src/main.o
+                0x20000394                previous_error
+ .bss.integral_term
+                0x20000398        0x4 ./Core/Src/main.o
+                0x20000398                integral_term
+ .bss.uwTick    0x2000039c        0x4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+                0x2000039c                uwTick
  *(COMMON)
-                0x20000394                        . = ALIGN (0x4)
-                0x20000394                        _ebss = .
-                0x20000394                        __bss_end__ = _ebss
+                0x200003a0                        . = ALIGN (0x4)
+                0x200003a0                        _ebss = .
+                0x200003a0                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20000394      0x604 load address 0x080063ac
-                0x20000398                        . = ALIGN (0x8)
- *fill*         0x20000394        0x4 
+                0x200003a0      0x600 load address 0x080063ac
+                0x200003a0                        . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
-                0x20000398                        PROVIDE (_end = .)
-                0x20000598                        . = (. + _Min_Heap_Size)
- *fill*         0x20000398      0x200 
-                0x20000998                        . = (. + _Min_Stack_Size)
- *fill*         0x20000598      0x400 
-                0x20000998                        . = ALIGN (0x8)
+                0x200003a0                        PROVIDE (_end = .)
+                0x200005a0                        . = (. + _Min_Heap_Size)
+ *fill*         0x200003a0      0x200 
+                0x200009a0                        . = (. + _Min_Stack_Size)
+ *fill*         0x200005a0      0x400 
+                0x200009a0                        . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
