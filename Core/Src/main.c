@@ -120,8 +120,8 @@ int data_sent_flag = 1;
 float value = 0.05; // LED brightness
 
 #define NUM_LEDS 10 // number of LEDs to control
-#define DUTY_CYCLE_ONE 0b111100 // PWM duty cycle to send a 1 to the LED chip
-#define DUTY_CYCLE_ZERO 0b110000 // PWM duty cycle to send a 0 to the LED chip
+#define DUTY_CYCLE_ONE 0b111100 // SPI data to send a 1 to the LED chip
+#define DUTY_CYCLE_ZERO 0b110000 // SPI data to send a 0 to the LED chip
 
 // LED CONTROL
 void WS2812_Send(uint32_t colours[])
