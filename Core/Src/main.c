@@ -208,7 +208,7 @@ void ComputeEnergyShaping() {
     }
 
     // work out the equivelant index in the sine lookup table for cosine
-    int index = (int) floor(((position_inverted + 600) % 2400) / 2);
+    int index = floor(((position_inverted + 600) % 2400) / 2);
     if (index < 0) {
       index += 1200;
     } else if (index >= 1200) {
@@ -463,7 +463,7 @@ int main(void)
     // choose a time period for the PWM signal sent to the BLDC motor; at higher speeds, the time period should be shorter (i.e. frequency is proportional to speed)
     int period = 2000;
     if (speed > 0.0) {
-      period = (int) floor(2000.0 / speed);
+      period = floor(2000.0 / speed);
       if (period > 40000) {
         period = 40000;
       } else if (period < 1000) {
@@ -474,14 +474,14 @@ int main(void)
     float duty_cycle_scalar = 0.1 + (speed / 2.5); // all three duty cycles should be higher at high speeds; this effectively regulates the voltage to the motor (though not really)
 
     // use the sine lookup table to cal
-    uint16_t motor_in1_duty_cycle = sine_lookup_table[(int) floor(cycle_state)];
-    uint16_t motor_in2_duty_cycle = sine_lookup_table[((int) floor(cycle_state + 400)) % 1200];
-    uint16_t motor_in3_duty_cycle = sine_lookup_table[((int) floor(cycle_state + 800)) % 1200];
+    uint16_t motor_in1_duty_cycle = sine_lookup_table[floor(cycle_state)];
+    uint16_t motor_in2_duty_cycle = sine_lookup_table[(floor(cycle_state + 400)) % 1200];
+    uint16_t motor_in3_duty_cycle = sine_lookup_table[(floor(cycle_state + 800)) % 1200];
 
     // set PWM duty cycles
-    TIM1->CCR1 = (int) floor(((float) motor_in1_duty_cycle) * duty_cycle_scalar * period / 65535.0);
-    TIM1->CCR2 = (int) floor(((float) motor_in2_duty_cycle) * duty_cycle_scalar * period / 65535.0);
-    TIM1->CCR3 = (int) floor(((float) motor_in3_duty_cycle) * duty_cycle_scalar * period / 65535.0);
+    TIM1->CCR1 = floor(((float) motor_in1_duty_cycle) * duty_cycle_scalar * period / 65535.0);
+    TIM1->CCR2 = floor(((float) motor_in2_duty_cycle) * duty_cycle_scalar * period / 65535.0);
+    TIM1->CCR3 = floor(((float) motor_in3_duty_cycle) * duty_cycle_scalar * period / 65535.0);
 
     // set PWM period
     TIM1->ARR = period;
